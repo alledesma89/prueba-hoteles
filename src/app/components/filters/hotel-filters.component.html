@@ -1,0 +1,63 @@
+<div class="filters-container animate__animated animate__fadeInLeft">
+  <!-- Name Filter -->
+  <div class="mb-4">
+    <label for="nameFilter" class="form-label">Hotel Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="nameFilter"
+      [ngModel]="filters.name"
+      (ngModelChange)="onNameChange($event)"
+      placeholder="Search by hotel name...">
+  </div>
+
+  <!-- Stars Filter -->
+  <div class="mb-4">
+    <label class="form-label d-block">Hotel Category</label>
+    <div class="stars-filter">
+      @for (star of availableStars; track star) {
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            [id]="'star' + star"
+            [checked]="filters.stars.includes(star)"
+            (change)="onStarToggle(star)">
+          <label class="form-check-label" [for]="'star' + star">
+            {{ star }} ⭐
+          </label>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Rating Filter -->
+  <div class="mb-4 range-filter animate__animated animate__fadeInUp animate__delay-1s">
+    <label for="rateFilter" class="form-label">Minimum Rating</label>
+    <input
+      type="range"
+      class="form-range"
+      id="rateFilter"
+      min="0"
+      max="5"
+      step="0.1"
+      [ngModel]="filters.minRate"
+      (ngModelChange)="onRateChange($event)">
+    <div class="value-display">Current value: {{ filters.minRate }} ⭐</div>
+  </div>
+
+  <!-- Price Filter -->
+  <div class="mb-4 range-filter">
+    <label for="priceFilter" class="form-label">Maximum Price</label>
+    <input
+      type="range"
+      class="form-range"
+      id="priceFilter"
+      min="50"
+      max="1000"
+      step="10"
+      [ngModel]="filters.maxPrice"
+      (ngModelChange)="onPriceChange($event)">
+    <div class="value-display">Current value: {{ filters.maxPrice }}€</div>
+  </div>
+</div>

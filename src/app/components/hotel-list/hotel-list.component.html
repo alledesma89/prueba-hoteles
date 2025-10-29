@@ -1,0 +1,67 @@
+<div class="container">
+  <!-- Filters -->
+  <app-hotel-filters (filtersChange)="onFiltersChange($event)"></app-hotel-filters>
+
+  <!-- Loading spinner -->
+  <div *ngIf="loading" class="d-flex justify-content-center my-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Hotel list -->
+  <div *ngIf="!loading">
+    <div class="hotel-list row g-4">
+      <div *ngFor="let hotel of hotels" class="col-md-6 col-lg-4">
+        <div class="card hotel-card h-100">
+          <img
+            [src]="hotel.image"
+            [alt]="hotel.name"
+            class="card-img-top hotel-image"
+            (error)="onImageError($event)"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ hotel.name }}</h5>
+            <p class="card-text">
+              <small class="text-muted">{{ hotel.address }}</small>
+            </p>
+            <div class="hotel-stars mb-2">
+              {{ getStarDisplay(hotel.stars) }}
+            </div>
+            <div class="hotel-rate mb-2">
+              Rating: {{ hotel.rate.toFixed(1) }} ⭐
+            </div>
+            <div class="hotel-price">
+              {{ hotel.price }}€ per night
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="hotels.length === 0" class="col-12">
+        <div class="alert alert-info" role="alert">
+          No hotels found matching your criteria.
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <nav *ngIf="hotels.length > 0" aria-label="Hotel pages navigation">
+      <ul class="pagination">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <button class="page-link" (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">
+            Previous
+          </button>
+        </li>
+        <li class="page-item">
+          <span class="page-link">Page {{ currentPage }}</span>
+        </li>
+        <li class="page-item">
+          <button class="page-link" (click)="onPageChange(currentPage + 1)">
+            Next
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

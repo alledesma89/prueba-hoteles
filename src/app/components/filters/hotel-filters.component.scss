@@ -1,0 +1,25 @@
+.filters-container {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-bottom: 20px;
+
+  .form-label {
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .stars-filter {
+    .form-check {
+      display: inline-block;
+      margin-right: 15px;
+    }
+  }
+
+  .range-filter {
+    .value-display {
+      font-size: 0.9em;
+      color: #6c757d;
+    }
+  }
+}

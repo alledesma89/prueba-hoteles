@@ -1,0 +1,48 @@
+/* App component styles: hero background and centered search */
+:host {
+  display: block;
+}
+
+.hero {
+  position: relative;
+  height: 52vh;
+  min-height: 360px;
+  background-image: url('https://images.unsplash.com/photo-1501117716987-c8e5d4b0b6b5?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&s=4d9c2b3b1e2bfa9b2e6b7a7f0f6a9f1c');
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.6));
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 2.5rem 1rem;
+}
+
+.hero-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+}
+
+.hero-subtitle {
+  color: rgba(255,255,255,0.92);
+}
+
+.hero-search {
+  max-width: 960px;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+
+@media (max-width: 767px) {
+  .hero { height: 46vh; }
+  .hero-title { font-size: 1.5rem; }
+}

@@ -1,0 +1,42 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- Simple hotel-search hero and list -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">{{ title || 'Hotel Finder' }}</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content text-center text-white">
+    <h1 class="hero-title mb-3">Encuentra el hotel perfecto</h1>
+    <p class="hero-subtitle mb-4">Filtra por nombre, categoría, valoración y precio. Busca ofertas en todo el mundo.</p>
+
+    <form class="row g-2 justify-content-center hero-search" (submit)="onHeroSearch(heroQuery.value)">
+      <div class="col-12 col-md-5">
+        <input #heroQuery type="search" class="form-control form-control-lg" placeholder="Ciudad, hotel o dirección" id="q" />
+      </div>
+      <div class="col-6 col-md-2 d-none d-md-block">
+        <select class="form-select form-select-lg">
+          <option value="">Check-in</option>
+        </select>
+      </div>
+      <div class="col-6 col-md-2 d-none d-md-block">
+        <select class="form-select form-select-lg">
+          <option value="">Check-out</option>
+        </select>
+      </div>
+      <div class="col-12 col-md-2">
+        <button class="btn btn-primary btn-lg w-100" type="submit">Buscar</button>
+      </div>
+    </form>
+  </div>
+</header>
+
+<main class="container my-5">
+  <app-hotel-list></app-hotel-list>
+</main>
+
+<router-outlet></router-outlet>
